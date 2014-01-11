@@ -18,7 +18,9 @@ Stateless JDBC database proxy over HTTP
 
 ## Configuration:
 * Create a config file (config.json)
-* ``javascript {serverPort:            9091,
+
+```
+{serverPort:            9091,
  maxConcurrentRequests: 50,
  useGzip:               false,
  dbAliases:             [{alias:          "mysql",
@@ -29,7 +31,7 @@ Stateless JDBC database proxy over HTTP
                           dsn:            "jdbc:mysql://localhost:3306/",
                           username:       "root",
                           password:       "root"}]}
-``
+```
 
 ## Starting the server:
 * Make sure DBMojo and your JDBC drivers are on your classpath
@@ -37,7 +39,9 @@ Stateless JDBC database proxy over HTTP
 
 #### Execute Query Set:
 * /?alias=mysql&json=[{query:"select sysdate() right_now from dual"},{query:"select subdate(sysdate(),1) yesterday from dual"}]
-* ``[
+
+```
+[
   {
     "message":"",
     "status":"success",
@@ -52,11 +56,14 @@ Stateless JDBC database proxy over HTTP
     "types":["DATETIME"],
     "rows":[["2010-08-07 00:46:38.0"]]
   }
-]``
+]
+```
 
 #### Execute Update Set:
 * /?alias=mysql&update=Y&json=[{query:"create table test.test_tbl (id int, blurb text)"},{query:"insert into test.test_tbl values(1,'Hello World!')"}]
-* ``[
+
+```
+[
   {
     "message":"",
     "status":"success"
@@ -64,11 +71,14 @@ Stateless JDBC database proxy over HTTP
     "types":[],
     "rows":[]
   }
-]``
+]
+```
 
 #### Execute Prepared Statement Query:
 * /?alias=mysql&json=[{query:"select subdate(sysdate(),1) yesterday from dual where 1 = ? and 2 = ?", values:[1,2]}]
-* ``[
+
+```
+[
   {
     "message":"",
     "status":"success",
@@ -76,11 +86,14 @@ Stateless JDBC database proxy over HTTP
     "types":["DATETIME"],
     "rows":[["2010-08-07 00:50:18.0"]]
   }
-]``
+]
+```
 
 #### Execute Prepared Statement Update:
 * /?alias=mysql&update=Y&json=[{query:"insert into test.test_tbl (id,blurb) values(?,?)", values:[1,'xyz']}]
-* ``[
+
+```
+[
   {
     "message":"",
     "status":"success",
@@ -88,7 +101,8 @@ Stateless JDBC database proxy over HTTP
     "types":[],
     "rows":[]
   }
-]``
+]
+```
 
 #### Stopping the server:
 * q + Enter
