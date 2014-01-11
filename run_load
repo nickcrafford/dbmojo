@@ -1,0 +1,1 @@
+ab -c 50 -n 100000 'http://$1/?alias=mysql&json=[{query:%22SELECT%20*%20from%20mysql.user%22}]'

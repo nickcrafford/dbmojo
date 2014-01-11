@@ -1,0 +1,1 @@
+java -classpath build/dbmojo.jar:lib/postgresql-8.4-701.jdbc4.jar:lib/classes12.jar:lib/mysql-connector-java-5.1.12-bin.jar:lib/derby.jar:. com.dbmojo.DBMojoServer $1

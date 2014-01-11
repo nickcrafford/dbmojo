@@ -1,0 +1,1 @@
+jython -Dpython.path=build/dbmojo.jar src/tests/TestHarness.py

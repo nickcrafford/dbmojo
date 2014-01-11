@@ -1,0 +1,27 @@
+{serverPort:            8093,
+ useGzip:               false,
+ errorLogPath:          "errors.log",
+ maxConcurrentRequests: 50,
+ dbAliases:             [
+                         {alias:          "mysql",
+                          maxConnections: 50,
+                          expirationTime: 300000,
+                          connectTimeout: 5,
+                          driver:         "com.mysql.jdbc.Driver",
+                          dsn:            "jdbc:mysql://localhost:3306/",
+                          username:       "root",
+                          password:       "root"},
+                         {alias:          "derby",
+                          maxConnections: 25,
+                          expirationTime: 300000,
+                          connectTimeout: 5,
+                          driver:         "org.apache.derby.jdbc.EmbeddedDriver",
+                          dsn:            "jdbc:derby:testdb;create=true",
+                          username:       "",
+                          password:       ""}
+                        ],
+clusters:               [
+                         {alias:    "mysql-cluster",
+                          readFrom: ["mysql","derby"],
+                          writeTo:  "mysql"}
+                        ]}

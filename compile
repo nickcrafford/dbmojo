@@ -1,0 +1,8 @@
+cd src
+javac -classpath .:../lib/ com/dbmojo/DBMojoServer.java
+jar cf dbmojo.jar com/dbmojo/*.class org/json/*.class
+rm com/dbmojo/*.class
+rm org/json/*.class
+mv dbmojo.jar ../build/
+cd ..
+javadoc -d doc/ src/com/dbmojo/*.java src/org/json/*.java
